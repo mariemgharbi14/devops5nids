@@ -7,5 +7,10 @@ pipeline {
                 sh """mvn -version"""
             }
         }
+        stage ('MVN SONAR SONAR') {
+            steps {
+            echo "Maven SONAR SONAR";
+                sh 'mvn sonar:sonar';
+}
     }
 }
