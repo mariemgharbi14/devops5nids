@@ -10,7 +10,7 @@ pipeline {
         stage ('MVN SONAR SONAR') {
             steps {
             echo "Maven SONAR SONAR";
-                sh 'mvn admin:sonar';
+                sh 'mvn sonar:sonar';
 }
     }
 }
