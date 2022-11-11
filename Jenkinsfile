@@ -31,7 +31,31 @@ stages {
                sh 'mvn verify'
           }
        }
-       
+       stage ('sonar '){
+    steps {
+       script {
+           withSonarQubeEnv('sonarqube_token'){
+               sh "mvn sonar:sonar"
+           }
+       }
+    }
+       }
+         stage('Docker compose') {
+
+                          steps {
+                               sh 'docker-compose up -d'
+                               sh 'sleep 60'
+                                 }  }
+           stage('deploy to Nexus') {
+      steps {
+        sh 'mvn clean deploy -Dmaven.test.skip=true'
+      }
+    }
+    stage('get from Nexus') {
+      steps {
+        sh 'wget --user=admin --password=8425 http://192.168.1.13:8081/repository/maven-releases/tn/esprit/rh/achat/1.0/achat-1.0.jar'
+      }
+    }
 stage("Building Docker Image") {
                 steps{
                    
@@ -48,11 +72,7 @@ stage("Building Docker Image") {
                  sh 'docker push heditrigui/achat'
             }
        }
-  stage('Docker compose') {
 
-                          steps {
-                               sh 'docker-compose up -d'
-                                 }  }
 
 
 }
