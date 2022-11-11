@@ -43,11 +43,11 @@ stage("Building Docker Image") {
                     sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u heditrigui -p dockerpass'
                 }
         }
-    stage("Push to DockerHub") {
-                steps{
-                 sh 'docker push heditrigui/achat'
-            }
-       }
+   // stage("Push to DockerHub") {
+   //             steps{
+    //             sh 'docker push heditrigui/achat'
+    //        }
+    //   }
   stage('Docker compose') {
 
                           steps {
