@@ -31,6 +31,12 @@ stages {
                sh 'mvn verify'
           }
        }
+       stage('Docker compose') {
+
+                          steps {
+                               sh 'docker-compose up -d'
+                               sh 'sleep 60'
+                                 }  }
        stage ('sonar '){
     steps {
        script {
@@ -40,12 +46,7 @@ stages {
        }
     }
        }
-         stage('Docker compose') {
 
-                          steps {
-                               sh 'docker-compose up -d'
-                               sh 'sleep 60'
-                                 }  }
            stage('deploy to Nexus') {
       steps {
         sh 'mvn clean deploy -Dmaven.test.skip=true'
