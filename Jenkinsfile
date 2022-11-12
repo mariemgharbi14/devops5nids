@@ -33,16 +33,22 @@ stages {
 			stage('Docker compose') {
             steps {
             sh 'docker-compose up -d';
+			}  
+			}
+			
+			stage('Wait 120s') {
+            steps {
 			sh 'sleep 120'
 			}  
 			}
+
 			
             stage ('Scan Sonar'){
             steps {
     sh "mvn sonar:sonar \
           -Dsonar.projectKey=achat \
           -Dsonar.host.url=http://192.168.100.18:9000 \
-          -Dsonar.login=53c30cc2409e64cecde7aaba9c90d0fde72bb823"
+          -Dsonar.login=079989e92ab515c2205a9579e1f64a72ec1e3ebe"
     }
     }
 	
