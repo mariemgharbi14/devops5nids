@@ -29,6 +29,13 @@ stages {
                sh 'mvn verify'
           }
        }
+	   		
+			stage('Docker compose') {
+            steps {
+            sh 'docker-compose up -d'
+			}  
+			}
+			
             stage ('Scan Sonar'){
             steps {
     sh "mvn sonar:sonar \
@@ -38,10 +45,5 @@ stages {
     }
     }
 	
-		stage('Docker compose') {
-            steps {
-            sh 'docker-compose up -d'
-			}  
-			}
 }
 }
