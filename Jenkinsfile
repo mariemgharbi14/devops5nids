@@ -31,14 +31,13 @@ stages {
                sh 'mvn verify'
           }
        }
-       stage ('sonar '){
-    steps {
-       script {
-           withSonarQubeEnv('sonarqube_token'){
-               sh "mvn sonar:sonar"
-           }
-       }
+                stage ('Scan Sonar'){
+            steps {
+    sh "mvn sonar:sonar \
+          -Dsonar.projectKey=achat \
+          -Dsonar.host.url=http://192.168.100.18:9000 \
+          -Dsonar.login=53c30cc2409e64cecde7aaba9c90d0fde72bb823"
     }
-       }
+        }
 }
 }
