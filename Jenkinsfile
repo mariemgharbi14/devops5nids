@@ -31,6 +31,22 @@ stages {
                sh 'mvn verify'
           }
        }
+       stage("Building Docker Image") {
+                       steps{
+
+                           sh 'docker build -t heditrigui/achat .'
+                       }
+               }
+           stage("Login to DockerHub") {
+                       steps{
+                           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u heditrigui -p dockerpass'
+                       }
+               }
+           stage("Push to DockerHub") {
+                       steps{
+                        sh 'docker push heditrigui/achat'
+                   }
+              }
        stage('Docker compose') {
 
                           steps {
@@ -57,22 +73,7 @@ stages {
         sh 'wget --user=admin --password=8425 http://192.168.1.13:8081/repository/maven-releases/tn/esprit/rh/achat/1.0/achat-1.0.jar'
       }
     }
-stage("Building Docker Image") {
-                steps{
-                   
-                    sh 'docker build -t heditrigui/achat .'
-                }
-        }
-    stage("Login to DockerHub") {
-                steps{
-                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u heditrigui -p dockerpass'
-                }
-        }
-    stage("Push to DockerHub") {
-                steps{
-                 sh 'docker push heditrigui/achat'
-            }
-       }
+
 
 
 
