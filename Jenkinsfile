@@ -29,20 +29,7 @@ stages {
                sh 'mvn verify'
           }
        }
-	   		
-			stage('Docker compose') {
-            steps {
-            sh 'docker-compose up -d';
-			}  
-			}
-			
-			stage('Wait 120s') {
-            steps {
-			sh 'sleep 120'
-			}  
-			}
 
-			
     stage ('Scan Sonar'){
     steps {
     sh "mvn sonar:sonar \
@@ -74,5 +61,22 @@ stages {
                         sh 'docker push khalil/achat'
                    }
               }
+			  
+			  
 }
+   post { 
+    success { 
+        mail to: "khalil.azizi@esprit.tn", 
+        subject: "Succes Notification", 
+        body: "Job done ${env.JOB_NAME}, 
+		Build Number: ${env.BUILD_NUMBER}, 
+		Build URL: ${env.BUILD_URL}" }
+		
+    failure { mail to: "khalil.azizi@esprit.tn", 
+		subject: "Pipeline Failure", 
+		body: "Failure on job ${env.JOB_NAME}, 
+		Build Number: ${env.BUILD_NUMBER}, 
+		Build URL: ${env.BUILD_URL} " } 
+}
+
 }
