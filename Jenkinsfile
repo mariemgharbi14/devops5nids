@@ -43,13 +43,18 @@ stages {
 			}
 
 			
-            stage ('Scan Sonar'){
-            steps {
+    stage ('Scan Sonar'){
+    steps {
     sh "mvn sonar:sonar \
           -Dsonar.projectKey=achat \
           -Dsonar.host.url=http://192.168.100.18:9000 \
           -Dsonar.login=079989e92ab515c2205a9579e1f64a72ec1e3ebe"
     }
+    }
+	 stage('Nexus Deploy') {
+      steps {
+        sh 'mvn clean deploy -Dmaven.test.skip=true'
+      }
     }
 	
 }
