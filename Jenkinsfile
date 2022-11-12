@@ -57,5 +57,22 @@ stages {
       }
     }
 	
+	
+	stage("Docker Image") {
+                       steps{
+
+                           sh 'docker build -t khalil/achat .'
+                       }
+               }
+           stage("DockerHub Login") {
+                       steps{
+                           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u KhalilAzizi -p azerty12345'
+                       }
+               }
+           stage("DockerHub Push") {
+                       steps{
+                        sh 'docker push khalil/achat'
+                   }
+              }
 }
 }
