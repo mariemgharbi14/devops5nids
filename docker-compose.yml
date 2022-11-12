@@ -22,7 +22,7 @@ services:
       - AppNet
     restart: on-failure
   angular:
-    image: badiskhalsi/angularproject
+    image: heditrigui/angularproject
     container_name: angular
     ports:
       - 80:80
