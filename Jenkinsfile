@@ -51,7 +51,7 @@ stages {
 
                           steps {
                                sh 'docker-compose up -d';
-                               sh 'sleep 180'
+                               sh 'sleep 300'
                                
                                  }  }
        stage ('sonar '){
