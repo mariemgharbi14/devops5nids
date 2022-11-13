@@ -22,7 +22,7 @@ pipeline {
                sh 'mvn compile';
            }
        }
-        stage('Maven Verify') {
+        stage('MVN VERIFY') {
              steps {
                sh 'mvn verify'
           }
