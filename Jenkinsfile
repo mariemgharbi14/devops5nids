@@ -48,13 +48,17 @@ pipeline {
             steps {
                 sh 'mvn clean deploy -Dmaven.test.skip=true'
             }
-        }
 
-        post { 
+            post { 
             success { mail to: "mohamedali.saguertrabelsi@esprit.tn", subject: "Pipeline executed succesfully", body: " All stages of the pipeline have finished running successfully ${env.JOB_NAME}, \n Build Number: ${env.BUILD_NUMBER}, \n Build URL: ${env.BUILD_URL}" }
         
             failure { mail to: "mohamedali.saguertrabelsi@esprit.tn", subject: "Pipeline Failed to execute correctly", body: " One or more stages of the pipeline failed to run successfully and returned some errors ${env.JOB_NAME}, \n Build Number: ${env.BUILD_NUMBER}, \n Build URL: ${env.BUILD_URL} " } 
+             }
+
+
         }
+
+       
 
 
     }
