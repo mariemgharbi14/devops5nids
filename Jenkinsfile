@@ -35,7 +35,7 @@ stages {
     sh "mvn sonar:sonar \
           -Dsonar.projectKey=achat \
           -Dsonar.host.url=http://192.168.1.192:9000 \
-          -Dsonar.login=079989e92ab515c2205a9579e1f64a72ec1e3ebe"
+          -Dsonar.login=c86cb074981bf9966a4b67d72a3fdc5d5c98b89e"
     }
     }
 	 stage('Nexus Deploy') {
