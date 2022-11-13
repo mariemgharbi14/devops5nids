@@ -48,7 +48,7 @@ stages {
 	stage("Docker Image") {
                        steps{
 
-                           sh 'docker build -t khalil/achat .'
+                           sh 'docker build -t khalilazizi/achat .'
                        }
                }
            stage("DockerHub Login") {
@@ -58,7 +58,7 @@ stages {
                }
            stage("DockerHub Push") {
                        steps{
-                        sh 'docker push khalil/achat'
+                        sh 'docker push khalilazizi/achat'
                    }
               }
 			  
