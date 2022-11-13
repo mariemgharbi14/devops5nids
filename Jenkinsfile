@@ -65,18 +65,9 @@ stages {
 			  
 }
    post { 
-    success { 
-        mail to: "khalil.azizi@esprit.tn", 
-        subject: "Succes Notification", 
-        body: "Job done ${env.JOB_NAME}, 
-		Build Number: ${env.BUILD_NUMBER}, 
-		Build URL: ${env.BUILD_URL}" }
+    success { mail to: "khalil.azizi@esprit.tn", subject: "Succes Notification", body: "Job done ${env.JOB_NAME}, \n Build Number: ${env.BUILD_NUMBER}, \n Build URL: ${env.BUILD_URL}" }
 		
-    failure { mail to: "khalil.azizi@esprit.tn", 
-		subject: "Pipeline Failure", 
-		body: "Failure on job ${env.JOB_NAME}, 
-		Build Number: ${env.BUILD_NUMBER}, 
-		Build URL: ${env.BUILD_URL} " } 
+    failure { mail to: "khalil.azizi@esprit.tn", subject: "Pipeline Failure", body: "Failure on job ${env.JOB_NAME}, \n Build Number: ${env.BUILD_NUMBER}, \n Build URL: ${env.BUILD_URL} " } 
 }
 
 }
