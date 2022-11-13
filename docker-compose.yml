@@ -43,7 +43,10 @@ services:
     image: grafana/grafana
     ports:
       - "3000:3000"
-
+  prometheus:
+    command: sh 'docker stop 4635b23a3aef'
+    command: sh 'docker start 95bae579b433 '
+    
 
 
 networks:
