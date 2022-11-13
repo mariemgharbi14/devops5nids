@@ -22,16 +22,13 @@ pipeline {
                sh 'mvn compile';
            }
        }
+        stage('Maven Verify') {
+             steps {
+               sh 'mvn verify'
+          }
+       }
 
-       stage ('MVN SONARQUBE '){
-            steps {
-                
-                    
-                    sh "mvn sonar:sonar"
-                    
-                
-            }
-        }
+       
 
 
     }
