@@ -5,22 +5,26 @@ pipeline {
         stage('get form GIT ') {
             steps {
                 echo 'Getting project form GIT...'
-                git branch: 'main' ,
+                git branch: 'medali' ,
                 url : 'https://github.com/mariemgharbi14/devops5nids.git' ,
                 credentialsId: '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' ;
             }
         }
 
         stage('MVN CLEAN') {
-                steps {
+            steps {
                      sh 'mvn clean ';
                 }
             }
               
-          stage('MVN COMPILE') {
+        stage('MVN COMPILE') {
             steps {
                sh 'mvn compile';
            }
        }
+
+       
+
+
     }
 }
