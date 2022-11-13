@@ -10,51 +10,51 @@ stages {
                 }  
             }
            
-               stage('MVN CLEAN') {
+               stage('maven clean') {
                         steps {
                            sh 'mvn clean '
                         }
                     }
-          stage('MVN COMPILE') {
+          stage('maven compile') {
             steps {
                sh 'mvn compile'
            }
         }
 
-          stage('mvn Test') {
+          stage('maven test / MOCKITO') {
             steps {
                sh 'mvn test'
             }
         }
-          stage('mvn Verify') {
+          stage('maven verify') {
              steps {
                sh 'mvn verify'
           }
        }
-       stage("Building Docker Image") {
+       stage("docker build") {
                        steps{
 
                            sh 'docker build -t heditrigui/achat .'
                        }
                }
-           stage("Login to DockerHub") {
+           stage("DockerHub login ") {
                        steps{
                            sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u heditrigui -p dockerpass'
                        }
                }
-           stage("Push to DockerHub") {
+           stage("DockerHub push") {
                        steps{
                         sh 'docker push heditrigui/achat'
                    }
               }
-       stage('Docker compose') {
+       stage('Docker-compose file') {
 
                           steps {
                                sh 'docker-compose up -d';
                                sh 'sleep 300'
                                
                                  }  }
-       stage ('sonar '){
+       stage ('sonar test '){
     steps {
        script {
            withSonarQubeEnv('sonarqube_token'){
