@@ -10,7 +10,7 @@ services:
     ports:
       - "3306:3306"
   springboot
-    image: aymenjerbi/back-project
+    image: khalil/achat
     container_name: springboot
     ports:
       - "8089:8089"

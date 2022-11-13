@@ -69,5 +69,4 @@ stages {
 		
     failure { mail to: "khalil.azizi@esprit.tn", subject: "Pipeline Failure", body: " Failure on job ${env.JOB_NAME}, \n Build Number: ${env.BUILD_NUMBER}, \n Build URL: ${env.BUILD_URL} " } 
 }
-
 }
