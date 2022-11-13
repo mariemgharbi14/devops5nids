@@ -27,7 +27,7 @@ pipeline {
                sh 'mvn test'
           }
        }
-       }
+       
         stage('MVN VERIFY') {
              steps {
                sh 'mvn verify'
