@@ -23,7 +23,15 @@ pipeline {
            }
        }
 
-       
+       stage ('MVN SONARQUBE '){
+            steps {
+                
+                    
+                    sh "mvn sonar:sonar"
+                    
+                
+            }
+        }
 
 
     }
