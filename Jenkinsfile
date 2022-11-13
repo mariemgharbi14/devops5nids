@@ -53,7 +53,7 @@ stages {
                }
            stage("DockerHub Login") {
                        steps{
-                           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u KhalilAzizi -p azerty12345'
+                           sh 'echo "Login to dockerhub in progress" | docker login -u khalilazizi -p azerty12345'
                        }
                }
            stage("DockerHub Push") {
