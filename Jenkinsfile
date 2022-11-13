@@ -74,11 +74,7 @@ stages {
         sh 'wget --user=admin --password=8425 http://192.168.1.13:8081/repository/maven-releases/tn/esprit/rh/achat/1.0/achat-1.0.jar'
       }
     }
-    stage('trufflehog scan to find leaked credentials') {
-      steps {
-        sh 'docker run -it -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/mariemgharbi14/devops5nids.git'
-      }
-    }
+
         
 
 
