@@ -21,6 +21,7 @@ pipeline {
             steps {
                sh 'mvn compile';
            }
+       }
 
            stage('JUNIT') {
              steps {
@@ -51,5 +52,4 @@ pipeline {
 
 
     }
-}
 }
