@@ -29,14 +29,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.rh.achat.entities.CategorieProduit;
 import tn.esprit.rh.achat.entities.Produit;
 import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.repositories.CategorieProduitRepository;
 import tn.esprit.rh.achat.repositories.ProduitRepository;
 import tn.esprit.rh.achat.repositories.StockRepository;
+import tn.esprit.rh.achat.services.ProduitServiceImpl;
+import tn.esprit.rh.achat.services.StockServiceImpl;
+import tn.esprit.rh.achat.services.CategorieProduitServiceImpl;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -47,10 +50,10 @@ import lombok.extern.slf4j.Slf4j;
 
 public class ProduitServiceImplTest {
     @Mock
-    ProduitRepository produitRepository;
+    ProduitRepository ProduitRepo;
 
     @InjectMocks
-    ProduitServiceImpl produitServiceService;
+    ProduitServiceImpl ProduitService;
 
 
     Produit p= new Produit(14L, 1998L);
