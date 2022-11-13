@@ -1,4 +1,4 @@
-package tn.esprit.rh.achat.services;
+package tn.esprit.rh.achat.util;
 
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
