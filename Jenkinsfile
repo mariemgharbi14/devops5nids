@@ -37,6 +37,12 @@ pipeline {
                     }
              }
 
+        stage('NEXUS check') {
+            steps {
+                sh 'mvn clean deploy -Dmaven.test.skip=true'
+            }
+        }
+
 
     }
 }
