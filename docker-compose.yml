@@ -1,0 +1,21 @@
+version: "3.4"
+
+services:
+  mysql-containerFinal1:
+    container_name: mysql-containerFinal1
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_DATABASE=1
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+    restart: always
+    volumes:
+      - mysql-containerFinal1:/var/lib/mysql:rw
+    image: 'mysql:latest'
+  dockerfile_springFinal1:
+    depends_on:
+      - mysql-containerFinal1
+    container_name: dockerfile_springFinal1
+    ports:
+      - '8089:8089'
+    image: marouen77/achat
