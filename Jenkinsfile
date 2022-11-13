@@ -28,7 +28,14 @@ pipeline {
           }
        }
 
-       
+       stage ('SONAR check'){
+            steps {
+                sh "mvn sonar:sonar \
+                -Dsonar.projectKey=sonar2 \
+                -Dsonar.host.url=http://192.168.33.10:9000 \
+                -Dsonar.login=6d9408226e7d2aa22474d2a7f613b79d1784558b -DskipTests"
+                    }
+             }
 
 
     }
