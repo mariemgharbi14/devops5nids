@@ -26,6 +26,11 @@ stages {
                sh 'mvn test'
             }
         }
+        stage('maven package') {
+             steps {
+               sh 'mvn package'
+          }
+       }
           stage('maven verify') {
              steps {
                sh 'mvn verify'
