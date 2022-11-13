@@ -37,6 +37,16 @@ pipeline {
   -Dsonar.login=1db77c392305de7546d7dd3fb7e148febc34b39b -DskipTests"
     }
         }
+        stage('Nexus') {
+      steps {
+        sh 'mvn clean deploy -Dmaven.test.skip=true'
+      }
+    }
+    stage('wget Nexus') {
+      steps {
+        sh 'wget --user=admin --password=nexus http://192.168.1.77:8081/repository/maven-releases/tn/esprit/rh/achat/1.0/achat-1.0.jar'
+      }
+    }
     }
     
     post {
