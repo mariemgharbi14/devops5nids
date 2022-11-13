@@ -19,3 +19,5 @@ services:
     ports:
       - '8089:8089'
     image: marouen77/achat
+volumes:
+  mysql-containerFinal2: { }
