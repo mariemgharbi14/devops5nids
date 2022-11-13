@@ -73,8 +73,8 @@ public class ProduitServiceImplTest {
         };
 
 
-        Mockito.when(produitServiceService.retrieveAllProduits()).thenReturn(Produitlist);
-        List<Produit> factureList = produitServiceService.retrieveAllProduits();
+        Mockito.when(ProduitService.retrieveAllProduits()).thenReturn(Produitlist);
+        List<Produit> factureList = ProduitService.retrieveAllProduits();
         System.out.println(" good job <3 ");
     }
 
@@ -84,7 +84,7 @@ public class ProduitServiceImplTest {
 
         Produit p = new Produit();
         p.setIdProduit(1L);
-        Mockito.when(produitRepository.save(any())).thenReturn(p);
+        Mockito.when(ProduitRepo.save(any())).thenReturn(p);
 
         assertEquals(1L, p.getIdProduit());
 
@@ -99,15 +99,15 @@ public class ProduitServiceImplTest {
 
         Produit p = new Produit();
         p.setIdProduit(Long.valueOf(100));
-        produitServiceService.addProduit(p);
-        produitServiceService.deleteProduit(p.getIdProduit());
+        ProduitService.addProduit(p);
+        ProduitService.deleteProduit(p.getIdProduit());
 
     }
 
     @Test
     public void updateProduit() {
-        Mockito.when(produitRepository.save(p)).thenReturn(p);
-        Produit p1 = produitServiceService.updateProduit(p);
+        Mockito.when(ProduitRepo.save(p)).thenReturn(p);
+        Produit p1 = ProduitService.updateProduit(p);
         Assertions.assertEquals(p, p1);
 
 
