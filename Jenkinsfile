@@ -42,6 +42,23 @@ pipeline {
         sh 'mvn clean deploy -Dmaven.test.skip=true'
       }
     }
+        stage("Docker Image") {
+                       steps{
+
+                           sh 'docker build -t marouen77/achat .'
+                       }
+               }
+           stage("DockerHub Login") {
+                       steps{
+                           sh 'echo "Login to dockerhub in progress" | docker login -u marouen77 -p 181JMT0649*'
+                       }
+               }
+           stage("DockerHub Push") {
+                       steps{
+                        sh 'docker push marouen77/achat'
+                   }
+              }
+
     }
     
     post {
