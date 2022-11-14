@@ -8,6 +8,11 @@ stages {
                 }  
             }
            
+		   stage('Docker compose') {
+            steps {
+            sh 'docker-compose up -d';
+			}  
+			}
                stage('Maven Clean') {
                         steps {
                            sh 'mvn clean '
@@ -29,6 +34,7 @@ stages {
                sh 'mvn verify'
           }
        }
+			
 
     stage ('Scan Sonar'){
     steps {
