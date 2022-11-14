@@ -48,10 +48,8 @@ public class Produit implements Serializable {
 	@JsonIgnore
 	private CategorieProduit categorieProduit;
 	
-	public Produit(Long idProduit, String codeProduit, String libelleProduit, float prix) {
-		this.idProduit = idProduit;
-		this.codeProduit = codeProduit;
-		this.libelleProduit = libelleProduit;
-		this.prix = prix;
+	public Produit(long l, long l1) {
+	}
+	public Produit(long idProduit, String codeProduit, int i, Object o, Object dateCreation, Object dateDerniereModification, Object stock, Object detailFacture, Object categorieProduit) {
 	}
 }
