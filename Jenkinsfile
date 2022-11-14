@@ -7,11 +7,19 @@ stages {
                     git branch: 'khalil', url: 'https://github.com/mariemgharbi14/devops5nids.git'
                 }  
             }
+			
+			stage('Docker compose') {
+            steps {
+            sh 'docker-compose up -d';
+			}  
+			}
+			
                stage('Maven Clean') {
                         steps {
                            sh 'mvn clean '
                         }
                     }
+					
           stage('Maven Compile') {
             steps {
                sh 'mvn compile'
@@ -28,8 +36,7 @@ stages {
                sh 'mvn verify'
           }
        }
-			
-
+		
     stage ('Scan Sonar'){
     steps {
     sh "mvn sonar:sonar \
