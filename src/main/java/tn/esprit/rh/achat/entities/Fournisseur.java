@@ -18,6 +18,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import static tn.esprit.rh.achat.entities.CategorieFournisseur.CONVENTIONNE;
 
 @Entity
 @Getter
