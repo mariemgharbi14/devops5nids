@@ -31,8 +31,8 @@ CategorieProduitRepository categorieProduitRepository;
 @InjectMocks
 CategorieProduitServiceImpl categorieProduit;
 
-CategorieProduit c1 = new CategorieProduit (1L,"abc","homme",null);
-CategorieProduit c2 = new CategorieProduit (2L,"abd","femme",null);
+CategorieProduit c1 = new CategorieProduit (1L,"codeTest1","categTest1",null);
+CategorieProduit c2 = new CategorieProduit (2L,"codeTest2","categTest2",null);
 
 @Test
 public void testRetrievecategorie() {
@@ -44,7 +44,7 @@ Assertions.assertNotNull(categorie1);
 @Test
 public void createcategorieproduitTest()
 {
-	CategorieProduit cat1 = new CategorieProduit(1L,"abc","homme",null);
+	CategorieProduit cat1 = new CategorieProduit(1L,"codeTest1","categTest1",null);
 
 	categorieProduit.addCategorieProduit(cat1);
 

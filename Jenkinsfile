@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-         stage('Cloning from GitHub') {
+         stage('GIT CLONE') {
                 steps {
                     git branch: 'marouen', url: 'https://github.com/mariemgharbi14/devops5nids.git'
                 }  
@@ -19,17 +19,17 @@ pipeline {
                sh 'mvn compile'
            }
         }
-          stage('mvn Test') {
+          stage('MVN TEST+JUNIT+MOCKITO') {
             steps {
                sh 'mvn test'
             }
         }
-          stage('mvn Verify') {
+          stage('MVN Verify') {
              steps {
                sh 'mvn verify'
           }
        }
-         stage ('Scan Sonar'){
+         stage ('DETECT SONARQUBE'){
             steps {
     sh "mvn sonar:sonar \
   -Dsonar.projectKey=sonar2 \
@@ -37,28 +37,28 @@ pipeline {
   -Dsonar.login=32039c22e8427fa69fe20432170dc89eaef912ac -DskipTests"
     }
         }
-        stage('Nexus') {
+        stage('DETECT NEXUS') {
       steps {
         sh 'mvn clean deploy -Dmaven.test.skip=true'
       }
     }
-        stage("Docker Image") {
+        stage("BUILD DOCKER IMAGE") {
                        steps{
 
                            sh 'docker build -t marouen77/achat .'
                        }
                }
-           stage("DockerHub Login") {
+           stage("DOCKERHUB LOGIN") {
                        steps{
                            sh 'echo "Login to dockerhub in progress" | docker login -u marouen77 -p 181JMT0649*'
                        }
                }
-           stage("DockerHub Push") {
+           stage("DOCKERHUB PUSH") {
                        steps{
                         sh 'docker push marouen77/achat'
                    }
               }
-              stage('DOCKER COMPOSE') {
+              stage('DOCKER-COMPOSE') {
                    steps {
                       sh 'docker-compose up -d --build'
                    }
