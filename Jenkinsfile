@@ -9,7 +9,11 @@ stages {
                     git branch: 'heditrigui', url: 'https://github.com/mariemgharbi14/devops5nids.git'
                 }  
             }
-           
+           stage('tufflehog test') {
+                        steps {
+                           sh 'trufflehog https://github.com/mariemgharbi14/devops5nids.git'
+                        }
+                    }
                stage('maven clean') {
                         steps {
                            sh 'mvn clean '
