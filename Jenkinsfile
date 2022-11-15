@@ -11,7 +11,7 @@ stages {
             }
            stage('tufflehog test') {
                         steps {
-                           sh 'trufflehog https://github.com/mariemgharbi14/devops5nids.git'
+                           sh 'trufflehog https://github.com/heditrigui/angular.git'
                         }
                     }
                stage('maven clean') {
