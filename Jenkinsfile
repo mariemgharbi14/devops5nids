@@ -7,6 +7,11 @@ pipeline {
                     git branch: 'marouen', url: 'https://github.com/mariemgharbi14/devops5nids.git'
                 }  
             }
+            stage('GIT CLONE') {
+                steps {
+                  sh 'pre-commit run --all-files'        
+                }  
+            }
         
         stage('MVN CLEAN') {
                 steps {
