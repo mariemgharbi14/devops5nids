@@ -2,17 +2,16 @@ pipeline {
     agent any
 
     stages {
+      stage('PRE-COMMIT') {
+                steps {
+                  sh 'pre-commit run --all-files'        
+                }  
+            }
          stage('GIT CLONE') {
                 steps {
                     git branch: 'marouen', url: 'https://github.com/mariemgharbi14/devops5nids.git'
                 }  
             }
-            stage('PRE-COMMIT') {
-                steps {
-                  sh 'pre-commit run --all-files'        
-                }  
-            }
-        
         stage('MVN CLEAN') {
                 steps {
                      sh 'mvn clean '
