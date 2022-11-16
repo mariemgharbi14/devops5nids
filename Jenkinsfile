@@ -21,7 +21,7 @@ stages {
            }
         }
 
-          stage('maven test / MOCKITO') {
+          stage('maven test / MOCKITO (commit-phase)') {
             steps {
                sh 'mvn test'
             }
@@ -59,7 +59,7 @@ stages {
                                sh 'sleep 300'
                                
                                  }  }
-       stage ('sonar test '){
+       stage ('sonar test (acceptance-phase)'){
     steps {
        script {
            withSonarQubeEnv('sonarqube_token'){
